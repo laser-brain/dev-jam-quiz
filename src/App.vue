@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
+import CategorySelection from './components/CategorySelection.vue';
 </script>
 
 <template>
-
+  <CategorySelection />
 </template>
 
 <style>

@@ -1,21 +1,31 @@
 <template>
-  <h1>Quiz Time</h1>
-  <label>{{ categoryName }}</label>
-  <QuizQuestion
-    v-for="question in questions"
-    :key="question.question"
-    :question="question"
-    :next="next"
-  />
-  <div v-if="finished">
-    <QuizSummary
-      :questions="questions"
-      :correctAnswers="correctAnswers"
-      :total-questions="questions.length"
-      :duration="time"
+  <div class="quiz">
+    <h1>Quiz Time</h1>
+    <span>{{ categoryName }}</span>
+    <QuizQuestion
+      v-for="question in questions"
+      :key="question.question"
+      :question="question"
+      :next="next"
     />
+    <div v-if="finished" class="summary">
+      <QuizSummary
+        :questions="questions"
+        :correctAnswers="correctAnswers"
+        :total-questions="questions.length"
+        :duration="time"
+      />
+      <div class="navButtons">
+        <router-link to="/" custom v-slot="{ navigate }">
+          <button @click="navigate">Category Selection</button>
+        </router-link>
+        <button @click="reload">Restart</button>
+      </div>
+    </div>
+    <div v-else class="stats">
+      <ConsoleLine :content="time" :show-caret="true" />
+    </div>
   </div>
-  <label v-else>{{ time }}</label>
 </template>
 
 <script lang="ts">
@@ -27,6 +37,8 @@ import QuizQuestion from "@/components/QuizQuestion.vue";
 import QuizSummary from "@/components/QuizSummary.vue";
 import StopWatch from "@/services/timer";
 import { LS_CATEGORY_KEY } from "@/services/helpers";
+import { ITriviaCategory } from "@/types/api-responses";
+import ConsoleLine from "../components/ConsoleLine.vue";
 
 export default defineComponent({
   setup() {
@@ -36,20 +48,23 @@ export default defineComponent({
     const timer = new StopWatch();
     let timerInterval: number;
     const time = ref("");
+    if (typeof route.params.categoryId !== "string") {
+      throw new Error(
+        `Invalid route param ${JSON.stringify(route.params.categoryId)}`
+      );
+    }
+    const categoryId = parseInt(route.params.categoryId);
 
     onMounted(async () => {
       timer.start();
       timerInterval = setInterval(() => {
         time.value = timer.formatTimespan(timer.elapsed());
       }, 20);
-      const categoryId = route.params.categoryId;
-      if (typeof categoryId === "string") {
-        const response = await getQuestions(categoryId, 10);
-        questions.value = response.map((res) => {
-          return { ...res, activeQuestion: false, answeredCorrectly: false };
-        });
-        questions.value[0].activeQuestion = true;
-      }
+      const response = await getQuestions(categoryId, 10);
+      questions.value = response.map((res) => {
+        return { ...res, activeQuestion: false, answeredCorrectly: false };
+      });
+      questions.value[0].activeQuestion = true;
     });
 
     const finished = ref(false);
@@ -72,11 +87,20 @@ export default defineComponent({
         .length;
     });
 
-    const categoryName = localStorage.getItem(LS_CATEGORY_KEY);
-    localStorage.removeItem(LS_CATEGORY_KEY);
-    
+    const categories: ITriviaCategory[] = JSON.parse(
+      localStorage.getItem(LS_CATEGORY_KEY) || "[]"
+    );
+    const categoryName = categories.filter(
+      (category) => category.id === categoryId
+    )[0].name;
+
+    function reload() {
+      location.reload();
+    }
+
     return {
       categoryName,
+      reload,
       questions,
       next,
       correctAnswers,
@@ -84,6 +108,30 @@ export default defineComponent({
       time,
     };
   },
-  components: { QuizQuestion, QuizSummary },
+  components: { QuizQuestion, QuizSummary, ConsoleLine },
 });
 </script>
+
+<style lang="scss" scoped>
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > * {
+    margin: 1em;
+  }
+  @media screen and (orientation: portrait) {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: left;
+  @media screen and (orientation: portrait) {
+    width: 100vw;
+  }
+}
+</style>

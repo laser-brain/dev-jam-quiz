@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="`/quiz/${category.id}`" custom v-slot="{ navigate }">
-      <button @click="startQuiz(navigate)">{{ category.name }}</button>
+      <button @click="navigate">{{ category.name }}</button>
     </router-link>
   </div>
 </template>
@@ -9,7 +9,6 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { ITriviaCategory } from "@/types/api-responses";
-import { LS_CATEGORY_KEY } from "@/services/helpers";
 
 export default defineComponent({
   props: {
@@ -18,16 +17,6 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
-    function startQuiz(navigate: Function) {
-      localStorage.setItem(LS_CATEGORY_KEY, props.category.name);
-      navigate();
-    }
-
-    return {
-      startQuiz
-    }
-  }
 });
 </script>
 
@@ -37,8 +26,10 @@ button {
   height: 4rem;
   margin: 1vw;
   border-radius: 5px;
-  color: white;
   background-color: black;
+  font-family : inherit;
+  color: gray;
+  border: 1px solid gray;
   cursor: pointer;
 
   @media screen and (orientation: portrait) {

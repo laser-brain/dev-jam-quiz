@@ -45,32 +45,22 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-button {
-  width: 22.5vw;
-  height: 4rem;
-  margin: 1vw;
-  border-radius: 5px;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-
-  @media screen and (orientation: portrait) {
-    width: 75vw;
-    margin-right: 10vw;
-    margin-left: 10vw;
-  }
-}
-
-.questionContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .question {
   display: flex;
   width: 50vw;
   justify-content: center;
   flex-wrap: wrap;
+
+  @media screen and (orientation: portrait) {
+    width: 100vw;
+  }
+}
+
+.questionContainer {
+  width: 50vw;
+  @media screen and (orientation: portrait) {
+    width: 100vw;
+  }
 }
 </style>

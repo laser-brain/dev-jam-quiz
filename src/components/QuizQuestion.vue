@@ -1,8 +1,10 @@
 <template>
-  <div v-if="question.activeQuestion">
+  <div v-if="question.activeQuestion" class="questionContainer">
     <h2 v-html="question.question" />
-    <div v-for="answer in answers" :key="answer">
-      <button v-html="answer" @click="getNextQuestion(answer, question)" />
+    <div class="question">
+      <div v-for="answer in answers" :key="answer">
+        <button v-html="answer" @click="getNextQuestion(answer, question)" />
+      </div>
     </div>
   </div>
 </template>
@@ -41,3 +43,34 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+button {
+  width: 22.5vw;
+  height: 4rem;
+  margin: 1vw;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+
+  @media screen and (orientation: portrait) {
+    width: 75vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+}
+
+.questionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question {
+  display: flex;
+  width: 50vw;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>

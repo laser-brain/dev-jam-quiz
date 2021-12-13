@@ -58,7 +58,7 @@ export default defineComponent({
     justify-content: left;
     align-items:flex-start;
     width: 50vw;
-    margin-top: 5rem;
+    margin-top: 1.5em;
     @media screen and (orientation: portrait) {
       width: 90vw;
     }

@@ -36,7 +36,6 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
-  background: linear-gradient(45deg, green, black);
 
   h1 {
     width: 100vw;

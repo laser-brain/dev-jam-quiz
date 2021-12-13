@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <router-view />
+  <Header />
+  <div class="app">
+    <router-view />
+  </div>
 </template>
 
 <style lang="scss">
@@ -16,9 +20,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  text-align: center;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(45deg, green, black);
+  background: linear-gradient(45deg, darkgreen, gray);
+}
+
+.app {
+  text-align: center;
 }
 </style>

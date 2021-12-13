@@ -4,8 +4,7 @@
     <QuizCategory
       v-for="category in categories"
       :key="category.id"
-      :name="category.name"
-      :id="category.id"
+      :category="category"
     />
   <div class="stretch" />
   </div>

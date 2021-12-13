@@ -1,26 +1,22 @@
 <template>
   <div>
-    <router-link :to="`/quiz/${id}`" custom v-slot="{ navigate }">
-      <button @click="navigate">{{ name }}</button>
+    <router-link :to="`/quiz/${category.id}`" custom v-slot="{ navigate }">
+      <button @click="navigate">{{ category.name }}</button>
     </router-link>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
+import { ITriviaCategory } from "@/types/api-responses";
 
 export default defineComponent({
   props: {
-    name: {
-      type: String,
+    category: {
+      type: Object as PropType<ITriviaCategory>,
       required: true,
     },
-    id: {
-      type: Number,
-      required: true,
-    }
   },
-  setup() {},
 });
 </script>
 

@@ -9,7 +9,7 @@ const routes = [
     component: CategorySelection,
   },
   {
-    path: "/quiz",
+    path: "/quiz/:categoryId",
     name: "Quiz",
     component: Quiz,
   },

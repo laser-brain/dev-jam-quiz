@@ -5,6 +5,7 @@
       v-for="category in categories"
       :key="category.id"
       :name="category.name"
+      :id="category.id"
     />
   <div class="stretch" />
   </div>

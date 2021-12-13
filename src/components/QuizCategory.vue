@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/quiz" custom v-slot="{ navigate }">
+    <router-link :to="`/quiz/${id}`" custom v-slot="{ navigate }">
       <button @click="navigate">{{ name }}</button>
     </router-link>
   </div>
@@ -15,6 +15,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    id: {
+      type: Number,
+      required: true,
+    }
   },
   setup() {},
 });

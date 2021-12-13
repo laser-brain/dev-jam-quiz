@@ -1,6 +1,6 @@
 <template>
   <h1>Quiz Time</h1>
-  <label>{{ categoryId }}</label>
+  <label>{{ categoryName }}</label>
   <QuizQuestion
     v-for="question in questions"
     :key="question.question"
@@ -8,11 +8,12 @@
     :next="next"
   />
   <div v-if="finished">
-  <QuizSummary
-    :correctAnswers="correctAnswers"
-    :total-questions="questions.length"
-    :duration="time"
-  />
+    <QuizSummary
+      :questions="questions"
+      :correctAnswers="correctAnswers"
+      :total-questions="questions.length"
+      :duration="time"
+    />
   </div>
   <label v-else>{{ time }}</label>
 </template>
@@ -25,6 +26,7 @@ import { IQuizQuestionViewModel } from "@/types/viewModels";
 import QuizQuestion from "@/components/QuizQuestion.vue";
 import QuizSummary from "@/components/QuizSummary.vue";
 import StopWatch from "@/services/timer";
+import { LS_CATEGORY_KEY } from "@/services/helpers";
 
 export default defineComponent({
   setup() {
@@ -33,7 +35,7 @@ export default defineComponent({
 
     const timer = new StopWatch();
     let timerInterval: number;
-    const time= ref("");
+    const time = ref("");
 
     onMounted(async () => {
       timer.start();
@@ -70,8 +72,11 @@ export default defineComponent({
         .length;
     });
 
+    const categoryName = localStorage.getItem(LS_CATEGORY_KEY);
+    localStorage.removeItem(LS_CATEGORY_KEY);
+    
     return {
-      categoryId: route.params.categoryId,
+      categoryName,
       questions,
       next,
       correctAnswers,

@@ -10,3 +10,5 @@ export function shuffleArray(array: string[]) {
 export function checkAnswer(answer: string, question: IQuizQuestionViewModel) {  
   question.answeredCorrectly = answer === question.correct_answer;
 }
+
+export const LS_CATEGORY_KEY = "selected-category-name"

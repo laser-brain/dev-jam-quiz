@@ -1,6 +1,6 @@
 <template>
   <h3>Finished</h3>
-  <span>You have answered {{ correctAnswers }}/{{ totalQuestions }} questions correctly.</span>
+  <span>You have answered {{ correctAnswers }}/{{ totalQuestions }} questions correctly. This took you {{ duration }}.</span>
 </template>
 
 <script lang="ts">
@@ -14,6 +14,9 @@ export default defineComponent({
     totalQuestions: {
       type: Number
     },
+    duration: {
+      type: String
+    }
   }
 })
 </script>

@@ -2,7 +2,7 @@ import { ICategoriesResponse, ITriviaCategory, IQuizQuestionResponse, IQuizQuest
 
 const apiUrl = 'https://opentdb.com';
 
-export async function loadCategories(): Promise<ITriviaCategory[]> {
+export async function getCategories(): Promise<ITriviaCategory[]> {
   const response = await fetch(`${apiUrl}/api_category.php`);
   const categories: ICategoriesResponse = await response.json();
 

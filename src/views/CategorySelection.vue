@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
-import { loadCategories } from "@/services/quiz-api";
+import { getCategories } from "@/services/quiz-api";
 import { ITriviaCategory } from "@/types/api-responses";
 import QuizCategory from "@/components/QuizCategory.vue";
 
@@ -21,7 +21,7 @@ export default defineComponent({
   setup() {
     const categories = ref<ITriviaCategory[]>([]);
     onMounted(async () => {
-      const apiCategories = await loadCategories();
+      const apiCategories = await getCategories();
       categories.value = apiCategories;
     });
     return {

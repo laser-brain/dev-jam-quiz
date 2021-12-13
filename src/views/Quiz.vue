@@ -7,13 +7,14 @@
     :question="question"
     :next="next"
   />
+  <div v-if="finished">
   <QuizSummary
-    v-if="finished"
     :correctAnswers="correctAnswers"
     :total-questions="questions.length"
     :duration="time"
   />
-  <label v-if="!finished">{{ time }}</label>
+  </div>
+  <label v-else>{{ time }}</label>
 </template>
 
 <script lang="ts">

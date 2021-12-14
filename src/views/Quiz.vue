@@ -54,20 +54,26 @@ export default defineComponent({
       );
     }
     const categoryId = parseInt(route.params.categoryId);
+    const finished = ref(false);
 
-    onMounted(async () => {
-      timer.start();
-      timerInterval = setInterval(() => {
-        time.value = timer.formatTimespan(timer.elapsed());
-      }, 20);
+    async function reload() {
       const response = await getQuestions(categoryId, 10);
       questions.value = response.map((res) => {
         return { ...res, activeQuestion: false, answeredCorrectly: false };
       });
       questions.value[0].activeQuestion = true;
-    });
+      finished.value = false;
+      
+      timer.reset();
+      timer.start();
+      timerInterval = setInterval(() => {
+        time.value = timer.formatTimespan(timer.elapsed());
+      }, 20);
+    }
 
-    const finished = ref(false);
+    onMounted(async () => {
+      await reload();
+    });
 
     function next(question: IQuizQuestionViewModel) {
       const index = questions.value.indexOf(question);
@@ -93,10 +99,6 @@ export default defineComponent({
     const categoryName = categories.filter(
       (category) => category.id === categoryId
     )[0].name;
-
-    function reload() {
-      location.reload();
-    }
 
     return {
       categoryName,

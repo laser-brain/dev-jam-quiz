@@ -14,6 +14,11 @@ export default class StopWatch {
     this._endTime = Date.now();
   }
 
+  public reset() {    
+    this._startTime = 0;
+    this._endTime = 0;
+  }
+
   public elapsed(): Date {
     return this._endTime > 0
       ? new Date(this._endTime - this._startTime)

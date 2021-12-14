@@ -1,11 +1,38 @@
-# Vue 3 + Typescript + Vite
+## Goal
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This project is a test- / playground for learning vue.js (Version 3) in combination with Typescript and [vitejs](https://vitejs.dev/)
 
-## Recommended IDE Setup
+The requirements of the application were defined in the Dev-Jam discord community which can be found at [https://devjam.vercel.app/](https://devjam.vercel.app/). If you want some challenge for your evolving development skills, come and join us!
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### Requirements
 
-## Type Support For `.vue` Imports in TS
+- [x] User can start the quiz by pressing a button
+- [x] User can see a question with 4 possible answers
+- [x] After selecting an answer, display the next question to the User. Do this until the quiz is finished
+- [x] At the end, the User can see the following statistics
+  - Time it took to finish the quiz
+  - How many correct answers did he get
+  - A message showing if he passed or failed the quiz
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### ⭐ Bonus features (optional)
+- [ ] User can share the result of a quiz on social media
+- [x] Add multiple quizzes to the application. User can select which one to take
+- [ ] User can create an account and have all the scores saved in his dashboard. User can complete a quiz multiple times
+- [ ] User can create their own quizzes
+
+## Project Setup
+
+### Local Development
+
+- If you haven't installed yarn on your system yet, install it by running
+
+  `$ npm i -g yarn`
+- `$ yarn`
+- `$ yarn dev`
+- Open your browser at [http://localhost:3000](http://localhost:3000)
+
+### Publishing
+
+I recommend [https://surge.sh](https://surge.sh) for deploying static web applications without a local database as it is so easy.
+
+run `surge` to deploy the application to a subdomain of your choosing at `surge.sh`

@@ -18,7 +18,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+
 img {
   cursor: pointer;
+  margin-top: 1.5em;
+  margin-left: 1.5em;
 }
 </style>

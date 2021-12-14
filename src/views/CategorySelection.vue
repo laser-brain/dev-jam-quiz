@@ -46,12 +46,13 @@ export default defineComponent({
 
   .console {
     text-align: left;
-    width: 100vw;
+    width: calc(100vw - 3em);
+    margin: 1.5em;
   }
 
-  .stretch {
-    width: 100vw;
-    height: calc(100vh - (4rem * 6) - 4rem - (1vw * 12));
-  }
+  // .stretch {
+  //   width: 100vw;
+  //   height: calc(100vh - (4rem * 6) - 4rem - (1vw * 12));
+  // }
 }
 </style>

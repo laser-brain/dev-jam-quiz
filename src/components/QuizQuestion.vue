@@ -46,6 +46,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 
+h2 {
+  text-align: center;
+}
+
 .question {
   display: flex;
   width: 50vw;

@@ -19,23 +19,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss" scoped>
-button {
-  width: 22.5vw;
-  height: 4rem;
-  margin: 1vw;
-  border-radius: 5px;
-  background-color: black;
-  font-family : inherit;
-  color: gray;
-  border: 1px solid gray;
-  cursor: pointer;
-
-  @media screen and (orientation: portrait) {
-    width: 75vw;
-    margin-right: 10vw;
-    margin-left: 10vw;
-  }
-}
-</style>

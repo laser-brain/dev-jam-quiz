@@ -14,7 +14,7 @@ export default class StopWatch {
     this._endTime = Date.now();
   }
 
-  public reset() {    
+  public reset() {
     this._startTime = 0;
     this._endTime = 0;
   }
@@ -26,12 +26,12 @@ export default class StopWatch {
   }
 
   public formatTimespan(timespan: Date): string {
-    const result =  `${String(timespan.getUTCHours()).padStart(2, '0')}:
+    const result = `${String(timespan.getUTCHours()).padStart(2, '0')}:
     ${String(timespan.getMinutes()).padStart(2, '0')}:
     ${String(timespan.getSeconds()).padStart(2, '0')}.
     ${String(timespan.getMilliseconds()).padStart(3, '0')}`
-    .replaceAll(" ", "")
-    .replaceAll("\n", "");
+      .replaceAll(' ', '')
+      .replaceAll('\n', '');
 
     return result;
   }

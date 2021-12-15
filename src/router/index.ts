@@ -1,16 +1,16 @@
-import { createWebHistory, createRouter } from "vue-router";
-import CategorySelection from "@/views/CategorySelection.vue";
-import Quiz from "@/views/Quiz.vue";
+import { createWebHistory, createRouter } from 'vue-router';
+import CategorySelection from '@/views/CategorySelection.vue';
+import Quiz from '@/views/Quiz.vue';
 
 const routes = [
   {
-    path: "/",
-    name: "CategorySelection",
+    path: '/',
+    name: 'CategorySelection',
     component: CategorySelection,
   },
   {
-    path: "/quiz/:categoryId",
-    name: "Quiz",
+    path: '/quiz/:categoryId',
+    name: 'Quiz',
     component: Quiz,
   },
 ];

@@ -1,4 +1,4 @@
-import { IQuizQuestionViewModel } from "@/types/viewModels";
+import { IQuizQuestionViewModel } from '@/types/viewModels';
 
 export function shuffleArray(array: string[]) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -7,8 +7,8 @@ export function shuffleArray(array: string[]) {
   }
 }
 
-export function checkAnswer(answer: string, question: IQuizQuestionViewModel) {  
+export function checkAnswer(answer: string, question: IQuizQuestionViewModel) {
   question.answeredCorrectly = answer === question.correct_answer;
 }
 
-export const LS_CATEGORY_KEY = "selected-category-name"
+export const LS_CATEGORY_KEY = 'selected-category-name';

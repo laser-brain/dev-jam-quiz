@@ -63,7 +63,7 @@ export default defineComponent({
       });
       questions.value[0].activeQuestion = true;
       finished.value = false;
-      
+
       timer.reset();
       timer.start();
       timerInterval = setInterval(() => {

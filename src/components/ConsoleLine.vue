@@ -2,7 +2,7 @@
   <div class="line">
     <div class="content">
       <span>{{ content }}</span>
-    <span v-if="showCaret" class="caret" />
+      <span v-if="showCaret" class="caret" />
     </div>
   </div>
 </template>

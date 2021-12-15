@@ -19,3 +19,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+  @media screen and (orientation: portrait) {
+    button {
+      margin-left: 12.5vw;
+      margin-right: 12.5vw;
+    }
+  }
+</style>

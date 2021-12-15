@@ -2,7 +2,10 @@
   <div class="category-container">
     <div class="console">
       <ConsoleLine :content="'Welcome unknown user ...'" />
-      <ConsoleLine :content="'Choose a category to start a new quiz!'" :showCaret="true" />
+      <ConsoleLine
+        :content="'Choose a category to start a new quiz!'"
+        :showCaret="true"
+      />
     </div>
     <QuizCategory
       v-for="category in categories"
@@ -49,10 +52,5 @@ export default defineComponent({
     width: calc(100vw - 3em);
     margin: 1.5em;
   }
-
-  // .stretch {
-  //   width: 100vw;
-  //   height: calc(100vh - (4rem * 6) - 4rem - (1vw * 12));
-  // }
 }
 </style>

@@ -48,6 +48,7 @@ export default defineComponent({
 
 h2 {
   text-align: center;
+  min-height: 2.5em;
 }
 
 .question {

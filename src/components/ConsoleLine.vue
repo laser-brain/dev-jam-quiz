@@ -1,7 +1,9 @@
 <template>
   <div class="line">
-    <div class="content">{{ content }}</div>
-    <div v-if="showCaret" class="caret" />
+    <div class="content">
+      <span>{{ content }}</span>
+    <span v-if="showCaret" class="caret" />
+    </div>
   </div>
 </template>
 
@@ -33,9 +35,11 @@ span {
 }
 
 .caret {
-  height: 18px;
+  display: inline-block;
+  height: 20px;
   width: 6px;
   border: none;
+  vertical-align: baseline;
   background-color: white;
   animation: blink-caret 0.5s step-end infinite;
 }

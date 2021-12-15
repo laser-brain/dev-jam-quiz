@@ -49,6 +49,8 @@ export default defineComponent({
 
     @media screen and (orientation: portrait) {
       width: 75vw;
+      margin-left: 12.5vw;
+      margin-right: 12.5vw;
     }
   }
 </style>

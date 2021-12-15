@@ -55,15 +55,25 @@ h2 {
   width: 50vw;
   justify-content: center;
   flex-wrap: wrap;
-
-  @media screen and (orientation: portrait) {
-    width: 100vw;
-  }
+  min-height: calc(4rem * 2 + 2em * 2);
 }
 
 .questionContainer {
   width: 50vw;
-  @media screen and (orientation: portrait) {
+}
+
+@media screen and (orientation: portrait) {
+  h2 {
+    min-height: 7em;
+  }
+  .question {
+    width: 100vw;
+    min-height: calc(4rem * 4 + 2em * 4);
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .questionContainer {
     width: 100vw;
   }
 }

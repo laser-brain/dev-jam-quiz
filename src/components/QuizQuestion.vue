@@ -9,39 +9,31 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { IQuizQuestionViewModel } from "@/types/viewModels";
 import { shuffleArray, checkAnswer } from "@/services/helpers";
-import { defineComponent, PropType } from "vue";
+import { PropType } from "vue";
 
-export default defineComponent({
-  props: {
-    question: {
-      type: Object as PropType<IQuizQuestionViewModel>,
-      required: true,
-    },
-    next: {
-      type: Function,
-      required: true,
-    },
+const props = defineProps({
+  question: {
+    type: Object as PropType<IQuizQuestionViewModel>,
+    required: true,
   },
-  setup(props) {
-    const answers = props.question.incorrect_answers;
-    answers.push(props.question.correct_answer);
-
-    shuffleArray(answers);
-
-    function getNextQuestion(answer: string, question: IQuizQuestionViewModel) {
-      checkAnswer(answer, question);
-      props.next(question);
-    }
-
-    return {
-      answers,
-      getNextQuestion,
-    };
+  next: {
+    type: Function,
+    required: true,
   },
 });
+
+const answers = props.question.incorrect_answers;
+answers.push(props.question.correct_answer);
+
+shuffleArray(answers);
+
+function getNextQuestion(answer: string, question: IQuizQuestionViewModel) {
+  checkAnswer(answer, question);
+  props.next(question);
+}
 </script>
 
 <style lang="scss" scoped>

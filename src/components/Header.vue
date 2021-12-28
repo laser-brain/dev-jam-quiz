@@ -6,15 +6,8 @@
   </router-link>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import q from "@/assets/q.svg";
-import { defineComponent } from "@vue/runtime-core";
-
-export default defineComponent({
-  setup() {
-    return { q };
-  },
-});
 </script>
 
 <style lang="scss" scoped>

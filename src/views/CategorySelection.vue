@@ -2,42 +2,27 @@
   <div class="category-container">
     <div class="console">
       <ConsoleLine :content="'Welcome unknown user ...'" />
-      <ConsoleLine
-        :content="'Choose a category to start a new quiz!'"
-        :showCaret="true"
-      />
+      <ConsoleLine :content="'Choose a category to start a new quiz!'" :showCaret="true" />
     </div>
-    <QuizCategory
-      v-for="category in categories"
-      :key="category.id"
-      :category="category"
-    />
+    <QuizCategory v-for="category in categories" :key="category.id" :category="category" />
     <div class="stretch" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+<script setup lang="ts">
+import { onMounted, ref } from "vue";
 import { getCategories } from "@/services/quiz-api";
 import { ITriviaCategory } from "@/types/api-responses";
 import QuizCategory from "@/components/QuizCategory.vue";
 import ConsoleLine from "@/components/ConsoleLine.vue";
 import { LS_CATEGORY_KEY } from "@/services/helpers";
 
-export default defineComponent({
-  components: { QuizCategory, ConsoleLine },
-  setup() {
-    const categories = ref<ITriviaCategory[]>([]);
-    onMounted(async () => {
-      const apiCategories = await getCategories();
-      categories.value = apiCategories;
+const categories = ref<ITriviaCategory[]>([]);
+onMounted(async () => {
+  const apiCategories = await getCategories();
+  categories.value = apiCategories;
 
-      localStorage.setItem(LS_CATEGORY_KEY, JSON.stringify(apiCategories));
-    });
-    return {
-      categories,
-    };
-  },
+  localStorage.setItem(LS_CATEGORY_KEY, JSON.stringify(apiCategories));
 });
 </script>
 

@@ -6,16 +6,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
+<script setup lang="ts">
+import { PropType } from "vue";
 import { ITriviaCategory } from "@/types/api-responses";
 
-export default defineComponent({
-  props: {
-    category: {
-      type: Object as PropType<ITriviaCategory>,
-      required: true,
-    },
+defineProps({
+  category: {
+    type: Object as PropType<ITriviaCategory>,
+    required: true,
   },
 });
 </script>

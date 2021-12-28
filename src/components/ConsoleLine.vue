@@ -7,18 +7,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  props: {
-    content: {
-      type: String,
-      required: true,
-    },
-    showCaret: {
-      type: Boolean,
-    },
+<script setup lang="ts">
+defineProps({
+  content: {
+    type: String,
+    required: true,
+  },
+  showCaret: {
+    type: Boolean,
   },
 });
 </script>
